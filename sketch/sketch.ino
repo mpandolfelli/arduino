@@ -4,8 +4,30 @@
 #define keyLeft   'a'
 #define keyRight  'd'
 
+//Motor traccion
 int IN3 = 5; 
 int IN4 = 4;
+
+//Motor doblar
+int IN1 = ;
+int IN2 = ;
+
+void left()
+{
+  digitalWrite (IN1, LOW);
+  digitalWrite (IN2, HIGH);
+  delay(200);
+  digitalWrite (IN2, LOW);
+}
+
+void right()
+{
+  digitalWrite (IN2, LOW);
+  digitalWrite (IN1, HIGH);
+  delay(200);
+  digitalWrite (IN1, LOW);
+}
+
 
 void forward()
 {
@@ -56,10 +78,15 @@ void loop()
 
       }else if(lectura == keyLeft)// si se presiona la A muevo hacia la izquierda
       {
+        Serial.write(lectura);
+        left();
+        Serial.write(lectura);
 
       }else if(lectura == keyRight)// si se presiona la D muevo hacia la derecha
       {
-
+        Serial.write(lectura);
+        right();
+        Serial.write(lectura);
       }
       else
       {
